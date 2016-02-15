@@ -1,4 +1,4 @@
-# Project Name #
+# FridgeKeep #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -18,27 +18,36 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  FridgeKeep
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Keep track of the items in your fridge to help you stay organized and reduce waste
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  It's easy to forget what's in the back of your fridge until it's too late. On average, Americans end up tossing over 30% of the food they purchase, generating unncessessary waste and driving up the costs of eating at home. Fridge Keep is designed to help users keep track of what's in their fridge, what's nearing expiration, and how much money are they wasting over time. Fridge Keep will allow users to enter food items with some additional data to better manage the fridge contents. Statistics will urge users to be less wasteful and save money over time.
 
 ## Problem ##
   > Describe the problem your product solves.
+  On average, Americans end up tossing over 30% of the food they purchase, generating waste and driving up food demand unnecessarily. The estimated value of wasted food in America is over $160B annually.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  Enter your food items upon purchase, along with the price and expiration date. Check back on Fridge Keep to see what items are in your fridge, organized by what's nearing expiration. As items are eaten or tossed, mark it in Fridge Keep to get ongoing statistics on your food consumption, spending, and waste habits.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "Save food, save money, save the world"
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  To get started, simply visit Fridge Keep, log in, and update your fridge each time you go shopping. If you've finished items, mark them as eaten or trashed to update statistics.
+
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "I save over $100 a month, and have to empty the compost way less often!"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
