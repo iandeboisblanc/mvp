@@ -1,5 +1,5 @@
 <div id='container'>
-  <form>
+  <form name='newItemForm' ng-submit='addItem()'>
     <h3>Enter new item:</h3>
     <div>
       <label>Item Name:</label>
@@ -9,6 +9,6 @@
       <label>Expiration Date:</label>
       <input type='date' ng-model='item.expDate' />
     </div>
-    <button ng-click='addItem()'>Submit</button>
+    <button type='submit'>Submit</button>
   </form>
 </div>
