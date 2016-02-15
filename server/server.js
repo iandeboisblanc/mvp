@@ -9,10 +9,10 @@ var app = express();
 var port = process.env.PORT || 8080; 
 
 // connect to mongo database named "shortly"
-// mongoose.connect(db.url);
+mongoose.connect(db.url);
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client'))
+app.use(express.static(__dirname + '/../client'));
 
 // configure our server with all the middleware and routing
 // require('./config/routes.js')(app, express);

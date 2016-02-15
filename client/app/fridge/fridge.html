@@ -11,10 +11,10 @@
     </div>
     <button type='submit'>Submit</button>
   </form>
-  <div id='fridgeView'>WORDS
+  <div id='fridgeView'>
     <ul>
-      <li class='fridgeItem' ng-repeat="item in storage" ng-style='getColor(item)'>
-        <div class='itemName'>{{ item.name }}</div>
+      <li class='fridgeItem' ng-repeat="item in storage">
+        <div class='itemName' ng-style='getColor(item)'>{{ item.name }}</div>
       </li>
     </ul>
   </div>
