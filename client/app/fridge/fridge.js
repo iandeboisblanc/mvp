@@ -41,7 +41,7 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
 
   $scope.finishActiveItem = function (percentage) {
     console.log('finishing...', window.activeItem.name, 'at this %:', percentage);
-    
+    UserActions.finishItem(window.activeItem, percentage);
   };
 
   $scope.makeActive = function (item, index) {

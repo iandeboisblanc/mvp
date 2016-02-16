@@ -19,7 +19,7 @@ app.post('/api/users/signin', userController.signin);
 app.post('/api/users/signup', userController.signup);
 app.get('/api/users/signedin', userController.checkAuth);
 
-app.use('/api/fridge', function (req, res, next) {
+app.use('/api/', function (req, res, next) {
     var token = req.headers['x-access-token'];
     var user;
     if (!token) {
@@ -35,7 +35,7 @@ app.use('/api/fridge', function (req, res, next) {
 });
 app.get('/api/fridge/', userController.getFridgeItems);
 app.post('/api/fridge/', userController.addNewItem);
-app.post('api/done', userController.finishItem);
+app.post('/api/done/', userController.finishItem);
 // app.get('/api/stats/', userController.getStats);
 
 

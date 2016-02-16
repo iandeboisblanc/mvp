@@ -89,7 +89,6 @@ module.exports = {
     findUser({username:req.user.username})
     .then(function (foundUser) {
       console.log('adding', req.body, 'to fridge of', foundUser.username);
-      console.log('currently, fridge contains', foundUser.fridge);
       User.findByIdAndUpdate(
         foundUser._id,
         {$push: {'fridge': req.body}},
@@ -103,6 +102,49 @@ module.exports = {
   },
 
   finishItem: function (req, res, next) {
-    
+    findUser({username:req.user.username})
+    .then(function (foundUser) {
+      var item = req.body.item;
+      var perc = req.body.percentFinished;
+      delete item['$$hashKey'];
+      delete item['index'];
+      console.log(item, 'was eaten at', perc, '%');
+      var pushObj = {};
+      var trashItem = JSON.parse(JSON.stringify(item));
+      trashItem.qty = (100 - perc) / 100;
+      var stomachItem = JSON.parse(JSON.stringify(item));
+      stomachItem.qty = perc / 100;
+      console.log(trashItem, stomachItem);
+      if(perc === 100) {
+        pushObj = {'stomach':stomachItem}
+      } else if(perc === 0) {
+        pushObj = {'trash':trashItem}
+      } else {
+        pushObj = {'trash':trashItem, 'stomach':stomachItem}
+      }
+      User.findByIdAndUpdate(
+        foundUser._id,
+        {$push: pushObj},
+        {safe: true, upsert: true},
+        function (err, model) {
+          if(err) {
+            console.log(err)
+          } else {
+            console.log(model);
+            for(var i = 0; i < model.fridge.length; i++) {
+              if(model.fridge[i].name === item.name && model.fridge[i].expDate === item.expDate) {
+                model.fridge.splice(i,1);
+                break;
+              }
+            }
+            model.save(function (err, model) {
+              if(err) {
+                console.error('Error saving fridge');
+              }
+              console.log(model);
+            });
+          }
+      });
+    })
   }
 };
