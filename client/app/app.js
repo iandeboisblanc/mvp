@@ -1,6 +1,7 @@
 angular.module('fridgeKeep', [
   'ngRoute',
   'fridgeKeep.fridge',
+  'fridgeKeep.stats',
   'fridgeKeep.auth',
   'fridgeKeep.services',
   'angular.filter'
