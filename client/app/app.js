@@ -1,31 +1,32 @@
 angular.module('fridgeKeep', [
   'ngRoute',
   'fridgeKeep.fridge',
-  'fridgeKeep.auth'
+  'fridgeKeep.auth',
+  'fridgeKeep.services'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
-    .when('/', {
+    .when('/fridge', {
       templateUrl: 'app/fridge/fridge.html',
       controller: 'FridgeController'
     })
     .when('/signin', {
-      templateUrl: 'app/auth/signin.html'
+      templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html'
+    .when('/signup', {
+      templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
     .otherwise({
-      redirectTo: '/' 
+      redirectTo: '/fridge' 
     });
     $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.shortly');
+      var jwt = $window.localStorage.getItem('com.frideKeep');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
