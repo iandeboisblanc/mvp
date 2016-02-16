@@ -7,6 +7,7 @@ body {
   background-color: rgb(180, 220, 255);
   padding: 30px;
   border-top: 5px solid grey;
+  border-bottom: 5px solid grey;
 }
 
 #fridgeView {
@@ -19,6 +20,18 @@ body {
   border-radius: 20px;
   min-height: 100px;
   padding: 15px;
+}
+
+.statVal {
+  font-weight: bold;
+}
+
+.stat {
+  margin-bottom: 10px;
+}
+
+.statsHeader, .contentsHeader {
+  margin: 0px 10px 10px 20px;
 }
 
 .fridgeItem {
@@ -45,9 +58,10 @@ body {
   margin: 20px;
 }
 
-nav, header, .statsHeader {
+nav, header {
   margin: 0px 10px 0px 20px;
 }
+
 
 nav a {
   margin-right: 10px;

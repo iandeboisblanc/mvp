@@ -9,7 +9,11 @@
     <h3>Enter new item:</h3>
     <div>
       <label for='item-name-input'>Item Name:</label>
-      <input id='item-name-input' ng-model='item.name' />
+      <input id='item-name-input' ng-model='item.name' required/>
+    </div>
+    <div>
+      <label for='input-value'>Value: $</label>
+      <input id='input-value' type="number" step="any" ng-model='item.value' />
     </div>
     <div>
       <label for='input-date'>Expiration Date:</label>
@@ -17,6 +21,7 @@
       <button type='submit'>Submit</button>
     </div>
   </form>
+  <h3 class='contentsHeader'>Fridge Contents:</h3>
   <div id='fridgeView'>
     <div class=row ng-repeat="items in storage | groupBy:4">
       <div class="col-xs-3 letter-box" ng-repeat="item in items" >

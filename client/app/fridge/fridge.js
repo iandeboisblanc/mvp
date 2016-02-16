@@ -6,9 +6,11 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
   $scope.signout = Auth.signout;
 
   $scope.addItem = function () {
+    $scope.item.dateFinished = new Date();
     UserActions.addFridgeItem($scope.item);
     $scope.item.name = '';
     $scope.item.expDate = '';
+    $scope.item.value = '';
     $scope.getFridgeItems();
   };
 

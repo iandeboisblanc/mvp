@@ -8,7 +8,16 @@
     <h3 class='statsHeader'>Stats:</h3>
     <div class='statsView'>
       <div class='statsContainer'>
-        <div>You have eaten {{ eaten }} items</div>
+        <div class='stat'>Of 
+          <span class='statVal'>{{ consumed }}</span> 
+        total items, you have eaten 
+          <span class='statVal'>{{ (eaten/consumed * 100).toFixed(1) }}% </span>
+        and tossed 
+          <span class='statVal'>{{ (trashed/consumed * 100).toFixed(1) }}%</span>
+        </div>
+        <div class='stat'>There are
+          <span class='statVal'>{{ expiring }}</span> items in your fridge expiring in the next week
+        </div>
       </div>
     </div>
 </div>
