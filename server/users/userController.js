@@ -79,7 +79,10 @@ module.exports = {
   },
 
   getFridgeItems: function (req, res, next) {
-    console.log('Server getting request for items:', req.body);
+    findUser({username:req.user.username})
+    .then(function (foundUser) {
+      res.json(foundUser.fridge);
+    })
   },
 
   addNewItem: function (req, res, next) {
@@ -92,7 +95,9 @@ module.exports = {
         {$push: {'fridge': req.body}},
         {safe: true, upsert: true},
         function (err, model) {
-          console.log(model);
+          if(err) {
+            console.log(err)
+          }
       });
     });
   }

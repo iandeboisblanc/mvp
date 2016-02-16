@@ -45,4 +45,3 @@ angular.module('fridgeKeep', [
   });
 });
 
-var fridgeStorage = [];
