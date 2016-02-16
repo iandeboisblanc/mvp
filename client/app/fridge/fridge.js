@@ -38,7 +38,8 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
   };
 
   $scope.removeItem = function (item) {
-    //call UserActionsRemove
+    console.log('tryna remove', item);
+    UserActions.removeItem(item);
   };
 
   $scope.finishActiveItem = function (percentage) {

@@ -36,7 +36,7 @@ app.use('/api/', function (req, res, next) {
 app.get('/api/fridge/', userController.getUserInfo);
 app.post('/api/fridge/', userController.addNewItem);
 app.post('/api/done/', userController.finishItem);
-// app.get('/api/stats/', userController.getStats);
+app.post('/api/remove/', userController.removeItem);
 
 
 // start listening to requests on port

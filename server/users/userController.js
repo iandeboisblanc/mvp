@@ -100,6 +100,26 @@ module.exports = {
     });
   },
 
+  removeItem: function (req, res, next) {
+    var item = req.body;
+    findUser({username:req.user.username})
+    .then(function (foundUser) {
+      for(var i = 0; i < foundUser.fridge.length; i++) {
+        if(foundUser.fridge[i].name === item.name && foundUser.fridge[i].expDate === item.expDate) {
+          foundUser.fridge.splice(i,1);
+          break;
+        }
+      }
+      foundUser.save(function (err, model) {
+        if(err) {
+          console.error('Error saving fridge');
+        } else {
+          res.send(model);
+        }
+      });
+    });
+  },
+
   finishItem: function (req, res, next) {
     findUser({username:req.user.username})
     .then(function (foundUser) {

@@ -29,6 +29,14 @@ angular.module('fridgeKeep.services', [])
       return response.data;
     });
   }
+  fac.removeItem = function (fridgeItem) {
+    return $http({
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(fridgeItem),
+      url: '/api/remove'
+    });
+  }
   return fac;
 })
 
