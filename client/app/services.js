@@ -1,5 +1,27 @@
 angular.module('fridgeKeep.services', [])
 
+.factory('UserActions', function ($http) {
+  var fac = {};
+  fac.getFridgeItems = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/fridge'
+    }).then(function (response) {
+      return response.data;
+    });
+  };
+  fac.addFridgeItem = function (fridgeItem) {
+    console.log('about to send a stringified version of..', fridgeItem);
+    return $http({
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(fridgeItem),
+      url: '/api/fridge'
+    });
+  };
+  return fac;
+})
+
 .factory('Auth', function ($http, $location, $window) {
   var signin = function (user) {
     return $http({
@@ -32,7 +54,6 @@ angular.module('fridgeKeep.services', [])
     $window.localStorage.removeItem('com.fridgeKeep');
     $location.path('/signin');
   };
-
 
   return {
     signin: signin,

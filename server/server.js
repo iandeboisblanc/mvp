@@ -33,12 +33,10 @@ app.use('/api/fridge', function (req, res, next) {
       return next(error);
     }
 });
-// app.get('/api/fridge/', userController.getFridgeItems);
+app.get('/api/fridge/', userController.getFridgeItems);
+app.post('/api/fridge/', userController.addNewItem);
 // app.get('/api/stats/', userController.getStats);
-// app.post('/api/fridge/', userController.addNewItem);
 
-// configure our server with all the middleware and routing
-// require('./config/routes.js')(app, express);
 
 // start listening to requests on port
 app.listen(port);

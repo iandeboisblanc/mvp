@@ -1,10 +1,11 @@
 angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
 
-.controller('FridgeController', function ($scope, Auth) {
+.controller('FridgeController', function ($scope, Auth, UserActions) {
   $scope.item = {};
   $scope.storage = fridgeStorage;
   $scope.addItem = function () {
     fridgeStorage.push(JSON.parse(JSON.stringify($scope.item)));
+    UserActions.addFridgeItem($scope.item);
     $scope.item.name = '';
     $scope.item.expDate = '';
   };

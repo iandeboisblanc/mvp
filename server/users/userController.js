@@ -76,5 +76,24 @@ module.exports = {
           next(error);
         });
     }
+  },
+
+  getFridgeItems: function (req, res, next) {
+    console.log('Server getting request for items:', req.body);
+  },
+
+  addNewItem: function (req, res, next) {
+    findUser(req.user)
+    .then(function (foundUser) {
+      console.log('adding', req.body, 'to fridge of', foundUser.username);
+      console.log('currently, fridge contains', foundUser.fridge);
+      User.findByIdAndUpdate(
+        foundUser._id,
+        {$push: {'fridge': req.body}},
+        {safe: true, upsert: true},
+        function (err, model) {
+          console.log(model);
+      });
+    });
   }
 };
