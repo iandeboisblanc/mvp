@@ -1,6 +1,6 @@
-angular.module('fridgeKeep.fridge', [])
+angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
 
-.controller('FridgeController', function ($scope) {
+.controller('FridgeController', function ($scope, Auth) {
   $scope.item = {};
   $scope.storage = fridgeStorage;
   $scope.addItem = function () {
@@ -18,4 +18,5 @@ angular.module('fridgeKeep.fridge', [])
     }
     return {'background-color':color};
   }
+  $scope.signout = Auth.signout;
 });

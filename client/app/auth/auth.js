@@ -6,7 +6,7 @@ angular.module('fridgeKeep.auth', [])
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.frideKeep', token);
+        $window.localStorage.setItem('com.fridgeKeep', token);
         $location.path('/fridge');
       })
       .catch(function (error) {
@@ -17,7 +17,7 @@ angular.module('fridgeKeep.auth', [])
   $scope.signup = function () {
     Auth.signup($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.frideKeep', token);
+        $window.localStorage.setItem('com.fridgeKeep', token);
         $location.path('/fridge');
       })
       .catch(function (error) {

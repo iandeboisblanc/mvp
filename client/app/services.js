@@ -28,6 +28,7 @@ angular.module('fridgeKeep.services', [])
   };
 
   var signout = function () {
+    console.log('Signing Out!')
     $window.localStorage.removeItem('com.fridgeKeep');
     $location.path('/signin');
   };

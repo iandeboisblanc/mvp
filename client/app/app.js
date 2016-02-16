@@ -8,7 +8,8 @@ angular.module('fridgeKeep', [
   $routeProvider
     .when('/fridge', {
       templateUrl: 'app/fridge/fridge.html',
-      controller: 'FridgeController'
+      controller: 'FridgeController',
+      authenticate: true
     })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
@@ -26,7 +27,7 @@ angular.module('fridgeKeep', [
 .factory('AttachTokens', function ($window) {
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.frideKeep');
+      var jwt = $window.localStorage.getItem('com.fridgeKeep');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
