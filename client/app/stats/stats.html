@@ -8,18 +8,24 @@
     <h3 class='statsHeader'>Stats:</h3>
     <div class='statsView'>
       <div class='statsContainer'>
-        <div class='stat'>Of 
-          <span class='statVal'>{{ consumed }}</span> 
-        total items, you have eaten 
-          <span class='statVal'>{{ (eatenQty/consumedQty * 100).toFixed(1) }}% </span>
-        and tossed 
-          <span class='statVal'>{{ (trashedQty/consumedQty * 100).toFixed(1) }}%</span>
+        <div class='stat'>You have finished 
+          <span class='statVal'>{{ consumedQty }}</span> 
+          total items
         </div>
         <div class='stat'>There are
           <span class='statVal'>{{ expiringQty }}</span> items in your fridge expiring in the next week
         </div>
-        <div id='pieChart'></div>
-        <div id='lineChart'></div>
+        <div class='chartView'>
+          <container class='chartContainerL'>
+            <h4>Total Waste %</h4>
+            <div id='pieChart'></div>
+          </container>
+          <container class='chartContainerR'>
+            <h4>Waste per Month ($)</h4>
+            <div id='lineChart'></div>
+          </container>
+          <div class='clear'></div>
+        </div>
       </div>
     </div>
 </div>
