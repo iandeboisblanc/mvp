@@ -107,13 +107,13 @@ module.exports = {
       var perc = req.body.percentFinished;
       delete item['$$hashKey'];
       delete item['index'];
-      console.log(item, 'was eaten at', perc, '%');
       var pushObj = {};
       var trashItem = JSON.parse(JSON.stringify(item));
       trashItem.qty = (100 - perc) / 100;
+      trashItem.value = trashItem.qty * item.value;
       var stomachItem = JSON.parse(JSON.stringify(item));
       stomachItem.qty = perc / 100;
-      console.log(trashItem, stomachItem);
+      stomachItem.value = stomachItem.qty * item.value;
       if(perc === 100) {
         pushObj = {'stomach':stomachItem}
       } else if(perc === 0) {

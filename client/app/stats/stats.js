@@ -10,19 +10,25 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
       $scope.trash = info.trash;
       $scope.stomach = info.stomach;
       $scope.fridge = info.fridge;
-      $scope.eaten = $scope.stomach.reduce(function (accumulator, current) {
+      $scope.eatenQty = $scope.stomach.reduce(function (accumulator, current) {
         return accumulator + current.qty;
       }, 0)
-      $scope.trashed = $scope.trash.reduce(function (accumulator, current) {
+      $scope.eatenVal = $scope.stomach.reduce(function (accumulator, current) {
+        return accumulator + current.value;
+      }, 0)
+      $scope.trashedQty = $scope.trash.reduce(function (accumulator, current) {
         return accumulator + current.qty;
       }, 0)
-      $scope.expiring = $scope.fridge.reduce(function (accumulator, current) {
+      $scope.trashedVal = $scope.trash.reduce(function (accumulator, current) {
+        return accumulator + current.value;
+      }, 0)
+      $scope.expiringQty = $scope.fridge.reduce(function (accumulator, current) {
         if($scope.daysToExpiry(current.expDate) <= 7) {
           accumulator++;
         }
         return accumulator;
       }, 0)
-      $scope.consumed = $scope.trashed + $scope.eaten;
+      $scope.consumedQty = $scope.trashedQty + $scope.eatenQty;
     });
   }
   $scope.getInfo();
