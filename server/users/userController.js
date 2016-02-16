@@ -83,7 +83,7 @@ module.exports = {
   },
 
   addNewItem: function (req, res, next) {
-    findUser(req.user)
+    findUser({username:req.user.username})
     .then(function (foundUser) {
       console.log('adding', req.body, 'to fridge of', foundUser.username);
       console.log('currently, fridge contains', foundUser.fridge);
