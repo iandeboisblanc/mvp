@@ -100,5 +100,9 @@ module.exports = {
           }
       });
     });
+  },
+
+  finishItem: function (req, res, next) {
+    
   }
 };

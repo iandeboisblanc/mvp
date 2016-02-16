@@ -1,8 +1,8 @@
 <div id='container'>
   <nav>
-    <a href='#'>Fridge</a>
+    <a href='#'>My Fridge</a>
     <a href='#'>Get Stats</a>
-    <a href='#' ng-click='signout()'>Log Out</a>
+    <a href='#' class='logoutBtn' ng-click='signout()'>Log Out</a>
   </nav>
   <hr>
   <form class='newItemForm' name='newItemForm' ng-submit='addItem()'>
@@ -28,17 +28,17 @@
             <span class='daysToExp'>{{ daysToExpiry(item.expDate) }} </span>
           </div>
           <div class='dropdown'>
-            <a class="glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" ng-click='makeActive(item)'>
+            <a class="glyphicon glyphicon-remove dropdown-toggle" data-toggle="dropdown" ng-click='makeActive(item, $index)'>
             </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="#" data-toggle="modal" data-target="#theModal">Finish</a>
+                  <a href="#" data-toggle="modal" data-target="#theModal">Finished</a>
                 </li>
                 <li>
-                  <a href="#" ng-click='finishItem(item,100)'>Toss</a>
+                  <a href="#" ng-click='finishItem(item, 100, $index)'>Toss</a>
                 </li>
                 <li>
-                  <a href="#" ng-click='removeItem(item)'>Remove</a>
+                  <a href="#" ng-click='removeItem(item, $index)'>Remove</a>
                 </li>
               </ul>
           </div>
@@ -51,7 +51,7 @@
 <div class="modal fade" id='theModal' tabindex="-1" role="dialog">
   <div class="modal-dialog" role='document'>
     <div class="modal-content">
-      <h3>What percent did you finish?</h3>
+      <h3>What percent of this item did you finish?</h3>
       <form oninput="amount.value=percentSlider.value + '%'">
         <input id="percentSlider" type="range" min="0" max="100" step="1" value='100'/>
         <output name="amount" for="percentSlider">100%</output>

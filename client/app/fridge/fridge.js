@@ -36,16 +36,18 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
   };
 
   $scope.removeItem = function (item) {
-
+    //call UserActionsRemove
   };
 
   $scope.finishActiveItem = function (percentage) {
     console.log('finishing...', window.activeItem.name, 'at this %:', percentage);
+    
   };
 
-  $scope.makeActive = function (item) {
+  $scope.makeActive = function (item, index) {
     console.log('made this active:', item.name);
     window.activeItem = item;
+    window.activeItem.index = index;
     console.log('see?', window.activeItem);
   };
 

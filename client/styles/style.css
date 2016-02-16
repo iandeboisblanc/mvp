@@ -34,17 +34,21 @@ body {
 }
 
 nav, header {
-  margin-left: 10px;
+  margin: 0px 10px 0px 20px;
+}
+
+nav a {
+  margin-right: 10px;
 }
 
 .dropdown {
   position: absolute;
   left: 85%;
-  top: 8%;
+  top: 5%;
 }
 
 .glyphicon {
-  color: black;
+  color: rgba(0,0,0,0.5);
   text-decoration: none;
 }
 
@@ -63,4 +67,8 @@ nav, header {
   position: absolute;
   left:90%;
   top:75%;
+}
+
+.logoutBtn {
+  float: right;
 }

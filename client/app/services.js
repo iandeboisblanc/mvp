@@ -19,6 +19,14 @@ angular.module('fridgeKeep.services', [])
       url: '/api/fridge'
     });
   };
+  fac.finishItem = function (fridgeItem, percentFinished) {
+    return $http({
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({item:fridgeItem, percentFinished:percentFinished}),
+      url: '/api/done'
+    });
+  }
   return fac;
 })
 

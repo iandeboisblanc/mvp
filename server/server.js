@@ -35,6 +35,7 @@ app.use('/api/fridge', function (req, res, next) {
 });
 app.get('/api/fridge/', userController.getFridgeItems);
 app.post('/api/fridge/', userController.addNewItem);
+app.post('api/done', userController.finishItem);
 // app.get('/api/stats/', userController.getStats);
 
 
