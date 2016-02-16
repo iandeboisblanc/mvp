@@ -3,10 +3,21 @@ body {
   min-width: 560px;
 }
 
-#fridgeView {
+#fridgeView, .statsView {
   background-color: rgb(180, 220, 255);
   padding: 30px;
   border-top: 5px solid grey;
+}
+
+#fridgeView {
+  padding-right: 100px;
+}
+
+.statsContainer {
+  background-color: white;
+  border: 5px solid grey;
+  border-radius: 20px;
+  min-height: 100px;
 }
 
 .fridgeItem {
@@ -33,7 +44,7 @@ body {
   margin: 20px;
 }
 
-nav, header {
+nav, header, .statsHeader {
   margin: 0px 10px 0px 20px;
 }
 

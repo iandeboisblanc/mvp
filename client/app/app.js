@@ -12,6 +12,11 @@ angular.module('fridgeKeep', [
       controller: 'FridgeController',
       authenticate: true
     })
+    .when('/stats', {
+      templateUrl: 'app/stats/stats.html',
+      controller: 'StatsController',
+      authenticate: true
+    })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'

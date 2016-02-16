@@ -2,7 +2,7 @@ angular.module('fridgeKeep.services', [])
 
 .factory('UserActions', function ($http) {
   var fac = {};
-  fac.getFridgeItems = function () {
+  fac.getUserInfo = function () {
     return $http({
       method: 'GET',
       url: '/api/fridge'
@@ -25,6 +25,8 @@ angular.module('fridgeKeep.services', [])
       contentType: 'application/json',
       data: JSON.stringify({item:fridgeItem, percentFinished:percentFinished}),
       url: '/api/done'
+    }).then(function (response) {
+      return response.data;
     });
   }
   return fac;

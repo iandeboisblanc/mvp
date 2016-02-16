@@ -33,7 +33,7 @@ app.use('/api/', function (req, res, next) {
       return next(error);
     }
 });
-app.get('/api/fridge/', userController.getFridgeItems);
+app.get('/api/fridge/', userController.getUserInfo);
 app.post('/api/fridge/', userController.addNewItem);
 app.post('/api/done/', userController.finishItem);
 // app.get('/api/stats/', userController.getStats);

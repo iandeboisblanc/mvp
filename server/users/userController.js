@@ -78,17 +78,16 @@ module.exports = {
     }
   },
 
-  getFridgeItems: function (req, res, next) {
+  getUserInfo: function (req, res, next) {
     findUser({username:req.user.username})
     .then(function (foundUser) {
-      res.json(foundUser.fridge);
+      res.json(foundUser);
     })
   },
 
   addNewItem: function (req, res, next) {
     findUser({username:req.user.username})
     .then(function (foundUser) {
-      console.log('adding', req.body, 'to fridge of', foundUser.username);
       User.findByIdAndUpdate(
         foundUser._id,
         {$push: {'fridge': req.body}},
@@ -130,7 +129,6 @@ module.exports = {
           if(err) {
             console.log(err)
           } else {
-            console.log(model);
             for(var i = 0; i < model.fridge.length; i++) {
               if(model.fridge[i].name === item.name && model.fridge[i].expDate === item.expDate) {
                 model.fridge.splice(i,1);
@@ -140,8 +138,9 @@ module.exports = {
             model.save(function (err, model) {
               if(err) {
                 console.error('Error saving fridge');
+              } else {
+                res.send(model);
               }
-              console.log(model);
             });
           }
       });

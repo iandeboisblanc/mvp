@@ -13,9 +13,9 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
   };
 
   $scope.getFridgeItems = function () {
-    UserActions.getFridgeItems()
-    .then(function (items) {
-      $scope.storage = items;
+    UserActions.getUserInfo()
+    .then(function (info) {
+      $scope.storage = info.fridge;
       $scope.storage.sort(function (a,b) {
         return new Date(a.expDate) - new Date(b.expDate);
       })
@@ -41,14 +41,15 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
 
   $scope.finishActiveItem = function (percentage) {
     console.log('finishing...', window.activeItem.name, 'at this %:', percentage);
-    UserActions.finishItem(window.activeItem, percentage);
+    UserActions.finishItem(window.activeItem, percentage)
+    .then(function () {
+      $scope.getFridgeItems();
+    });
   };
 
   $scope.makeActive = function (item, index) {
-    console.log('made this active:', item.name);
     window.activeItem = item;
     window.activeItem.index = index;
-    console.log('see?', window.activeItem);
   };
 
   $scope.getFridgeItems();
