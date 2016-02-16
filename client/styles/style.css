@@ -1,3 +1,66 @@
 body {
   font-family: sans-serif;
+  min-width: 560px;
+}
+
+#fridgeView {
+  background-color: rgb(180, 220, 255);
+  padding: 30px;
+  border-top: 5px solid grey;
+}
+
+.fridgeItem {
+  position: relative;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  min-height: 80px;
+  min-width: 120px;
+  max-width: 150px;
+  margin-bottom: 15px;
+  padding-right: 15px;
+}
+
+.itemNameLabel, .daysToExpLabel {
+  font-weight: bold;
+}
+
+.itemName, .daysToExp {
+  font-weight: normal;
+}
+
+.newItemForm {
+  margin: 20px;
+}
+
+nav, header {
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: absolute;
+  left: 85%;
+  top: 8%;
+}
+
+.glyphicon {
+  color: black;
+  text-decoration: none;
+}
+
+.glyphicon:hover {
+   color:#00A0C6; 
+   text-decoration:none; 
+   cursor:pointer;  
+}
+
+.modal-content {
+  padding: 20px;
+  max-width: 500px
+}
+
+.glyphicon-ok {
+  position: absolute;
+  left:90%;
+  top:75%;
 }

@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html ng-app='fridgeKeep'>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Fridge Keep</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
@@ -12,9 +15,11 @@
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
-
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-filter/dist/angular-filter.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/fridge/fridge.js"></script>
     <script src="app/services.js"></script> 

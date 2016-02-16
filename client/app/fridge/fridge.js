@@ -2,29 +2,56 @@ angular.module('fridgeKeep.fridge', ['fridgeKeep.services'])
 
 .controller('FridgeController', function ($scope, Auth, UserActions) {
   $scope.item = {};
-  // $scope.storage = fridgeStorage;
   $scope.storage = [];
+  $scope.signout = Auth.signout;
+
   $scope.addItem = function () {
     UserActions.addFridgeItem($scope.item);
     $scope.item.name = '';
     $scope.item.expDate = '';
     $scope.getFridgeItems();
   };
+
   $scope.getFridgeItems = function () {
     UserActions.getFridgeItems()
     .then(function (items) {
       $scope.storage = items;
+      $scope.storage.sort(function (a,b) {
+        return new Date(a.expDate) - new Date(b.expDate);
+      })
     })
   };
+
   $scope.getColor = function (item) {
-    var color = 'rgba(0,0,230,0.5)';
-    var daysToExpiry = Math.floor((new Date(item.expDate) - new Date()) / 1000 / 60 / 60 / 24);
+    var color = 'rgba(50,50,230,0.5)';
+    var daysToExpiry = $scope.daysToExpiry(item.expDate);
     if(daysToExpiry < 7) {
-      color = 'rgba(' + (Math.min((7 - daysToExpiry),7) * 33) + ', 0, ' + (Math.max(daysToExpiry, 0) * 25) + ', 0.5)';
-      // console.log(color);
+      color = 'rgba(' + ((Math.min((7 - daysToExpiry),7) * 25) + 50) + ', 50, ' + (Math.max(daysToExpiry, 0) * 20 + 50) + ', 0.5)';
     }
     return {'background-color':color};
-  }
-  $scope.signout = Auth.signout;
+  };
+
+  $scope.daysToExpiry = function (expDate) {
+    return Math.floor((new Date(expDate) - new Date()) / 1000 / 60 / 60 / 24);
+  };
+
+  $scope.removeItem = function (item) {
+
+  };
+
+  $scope.finishActiveItem = function (percentage) {
+    console.log('finishing...', window.activeItem.name, 'at this %:', percentage);
+  };
+
+  $scope.makeActive = function (item) {
+    console.log('made this active:', item.name);
+    window.activeItem = item;
+    console.log('see?', window.activeItem);
+  };
+
   $scope.getFridgeItems();
+  $('#theModal').on('hidden.bs.modal', function (e) {
+    var percentage = $('#percentSlider').val()
+    $scope.finishActiveItem(percentage);
+  })
 });

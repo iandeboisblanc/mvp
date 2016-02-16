@@ -2,7 +2,8 @@ angular.module('fridgeKeep', [
   'ngRoute',
   'fridgeKeep.fridge',
   'fridgeKeep.auth',
-  'fridgeKeep.services'
+  'fridgeKeep.services',
+  'angular.filter'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
