@@ -30,8 +30,12 @@ body {
   margin-bottom: 5px;
 }
 
-.statsHeader, .contentsHeader, .login-header {
+.statsHeader, .contentsHeader {
   margin: 0px 10px 10px 20px;
+}
+
+#signin, #signup {
+  margin-left: 20px;
 }
 
 .fridgeItem {
