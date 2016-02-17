@@ -27,7 +27,7 @@
       <div class="col-xs-3 letter-box" ng-repeat="item in items" >
         <div class='fridgeItem' ng-style='getColor(item)'>
           <div class='itemNameLabel'>Item:
-            <span class='itemName'>{{ item.name }}</span>
+            <span class='itemName'>{{ item.name.toUpperCase() }}</span>
           </div>
           <div class='daysToExpLabel'>Days To Exp:
             <span class='daysToExp'>{{ daysToExpiry(item.expDate) }} </span>
