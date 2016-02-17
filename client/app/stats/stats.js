@@ -2,7 +2,6 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
 
 .controller('StatsController', function ($scope, Auth, UserActions) {
   $scope.signout = Auth.signout;
-  $scope.goal = 25;
 
   $scope.daysToExpiry = function (expDate) {
     return Math.floor((new Date(expDate) - new Date()) / 1000 / 60 / 60 / 24);
@@ -14,6 +13,7 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
       $scope.trash = info.trash;
       $scope.stomach = info.stomach;
       $scope.fridge = info.fridge;
+      $scope.goal = info.goal || 25;
       $scope.eatenQty = $scope.stomach.reduce(function (accumulator, current) {
         return accumulator + current.qty;
       }, 0)
@@ -39,9 +39,10 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
     });
   };
 
-  $scope.updateLineChart = function () {
+  $scope.updateGoal = function () {
     $('#lineChart').empty();
     $scope.lineChart();
+    UserActions.setGoal($scope.goal);
   };
 
   $scope.getDataByMonth = function () {

@@ -37,6 +37,7 @@ app.get('/api/fridge/', userController.getUserInfo);
 app.post('/api/fridge/', userController.addNewItem);
 app.post('/api/done/', userController.finishItem);
 app.post('/api/remove/', userController.removeItem);
+app.post('/api/goal/', userController.updateGoal);
 
 
 // start listening to requests on port

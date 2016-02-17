@@ -14,6 +14,10 @@ var UserSchema = new mongoose.Schema({
     required: true
   },
 
+  goal: {
+    type: Number
+  },
+
   fridge: {
     type: Array
   },

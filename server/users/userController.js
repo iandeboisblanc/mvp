@@ -85,6 +85,20 @@ module.exports = {
     })
   },
 
+  updateGoal: function (req, res, next) {
+    findUser({username:req.user.username})
+    .then(function (foundUser) {
+      User.findByIdAndUpdate(foundUser._id,
+        {$set: {'goal': req.body.goal}},
+        {safe: true, upsert: true},
+        function (err, model) {
+          if(err) {
+            console.log(err)
+          }
+      });
+    });
+  },
+
   addNewItem: function (req, res, next) {
     findUser({username:req.user.username})
     .then(function (foundUser) {

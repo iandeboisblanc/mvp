@@ -37,6 +37,14 @@ angular.module('fridgeKeep.services', [])
       url: '/api/remove'
     });
   }
+  fac.setGoal = function (goal) {
+    return $http({
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({goal}),
+      url: '/api/goal'
+    });
+  }
   return fac;
 })
 
