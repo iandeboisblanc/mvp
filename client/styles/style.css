@@ -18,8 +18,8 @@ body {
   background-color: white;
   border: 5px solid grey;
   border-radius: 20px;
-  min-height: 100px;
   padding: 15px;
+  min-width: 650px;
 }
 
 .statVal {
@@ -110,22 +110,35 @@ nav a {
   height: 250px;
 }
 
-.chartContainerL {
+.chartContainerR, .chartContainerL {
   float:left;
   width: 50%;
 }
 
-.chartContainerR {
-  float:right;
-  width: 50%;
+#wasteGoal {
+  margin-top: 40px;
+  margin-left: 20px;
+  width: 48%;
+}
+
+#wasteGoal > input {
+  width:50px;
 }
 
 .clear {
   clear:both;
 }
 
-h4 { 
-  text-align: center;
+#lineHeader { 
+  float:left;
+  position:relative;
+  left:25%;
+  font-weight: bold;
+}
+
+#pieHeader {
+  position:relative;
+  left:105px;
   font-weight: bold;
 }
 

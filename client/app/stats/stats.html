@@ -17,16 +17,16 @@
         </div>
         <div class='chartView'>
           <container class='chartContainerL'>
-            <h4>Total Waste % (qty)</h4>
+            <h4 id='pieHeader'>Total Waste % (qty)</h4>
             <div id='pieChart'></div>
           </container>
           <container class='chartContainerR'>
-            <h4>Waste per Month ($)</h4>
+            <h4 id='lineHeader'>Waste per Month ($)</h4>
             <div id='lineChart'></div>
+            <div id='wasteGoal'>Set monthly waste goal: $
+              <input ng-model='goal' ng-change='updateGoal()'></input>
+            </div>
           </container>
-          <div>Set monthly waste goal: $
-            <input ng-model='goal' ng-change='updateGoal()'></input>
-          </div>
           <div class='clear'></div>
         </div>
       </div>
