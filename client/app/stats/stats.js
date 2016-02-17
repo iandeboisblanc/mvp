@@ -2,7 +2,8 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
 
 .controller('StatsController', function ($scope, Auth, UserActions) {
   $scope.signout = Auth.signout;
-  
+  $scope.goal = 25;
+
   $scope.daysToExpiry = function (expDate) {
     return Math.floor((new Date(expDate) - new Date()) / 1000 / 60 / 60 / 24);
   };
@@ -38,9 +39,13 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
     });
   };
 
+  $scope.updateLineChart = function () {
+    $('#lineChart').empty();
+    $scope.lineChart();
+  };
+
   $scope.getDataByMonth = function () {
-    var trashMonths = {};
-    var stomachMonths = {};
+    var dataByMonth = {};
     for(var i = 0; i < $scope.trash.length; i++) {
       var item = $scope.trash[i];
       var date = new Date(item.dateFinished);
@@ -50,9 +55,10 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
       }
       var year = date.getFullYear().toString();
       var yearmonth = '' + year + month;
-      trashMonths[yearmonth] = trashMonths[yearmonth] || {date:month + '/' + year, value:0, qty:0};
-      trashMonths[yearmonth].value += item.value;
-      trashMonths[yearmonth].qty += item.qty;
+      dataByMonth[yearmonth] = dataByMonth[yearmonth] || {date:month + '/' + year, trashVal:0, 
+                                                         trashQty:0, stomachVal:0, stomachQty:0};
+      dataByMonth[yearmonth].trashVal += item.value;
+      dataByMonth[yearmonth].trashQty += item.qty;
     }
     for(var i = 0; i < $scope.stomach.length; i++) {
       var item = $scope.stomach[i];
@@ -63,12 +69,12 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
       }
       var year = date.getFullYear().toString();
       var yearmonth = '' + year + month;
-      stomachMonths[yearmonth] = stomachMonths[yearmonth] || {date:month + '/' + year, value:0, qty:0};
-      stomachMonths[yearmonth].value += item.value;
-      stomachMonths[yearmonth].qty += item.qty;
+      dataByMonth[yearmonth] = dataByMonth[yearmonth] || {date:year + '-' + month, trashVal:0, 
+                                                         trashQty:0, stomachVal:0, stomachQty:0};
+      dataByMonth[yearmonth].stomachVal += item.value;
+      dataByMonth[yearmonth].stomachQty += item.qty;
     }
-    $scope.trashMonths = trashMonths;
-    $scope.stomachMonths = stomachMonths;
+    $scope.dataByMonth = dataByMonth;
   };
   
   $scope.pieChart = function () {
@@ -83,19 +89,24 @@ angular.module('fridgeKeep.stats', ['fridgeKeep.services'])
   };
 
   $scope.lineChart = function () {
-    var trashMonths = $scope.trashMonths;
+    var dataByMonth = $scope.dataByMonth;
     var data = [];
-    for(key in trashMonths) {
-      var entry = {month:trashMonths[key].date, value:trashMonths[key].value};
+    for(key in dataByMonth) {
+      var month = dataByMonth[key];
+      var entry = {month:month.date, trashValue:month.trashVal, stomachValue:month.stomachVal};
       data.push(entry);
     }
     new Morris.Line({
       element: 'lineChart',
       data: data,
       xkey: 'month',
-      ykeys: ['value'],
-      labels: ['Wasted food'],
-      yLabelFormat:function (y) { return '$' + y.toFixed(2); }
+      ykeys: ['trashValue', 'stomachValue'],
+      labels: ['Wasted', 'Eaten'],
+      hideHover:true,
+      yLabelFormat:function (y) { return '$' + y.toFixed(2); },
+      goals: [$scope.goal],
+      goalStrokeWidth: 2,
+      goalLineColors: ['steelblue']
     });
   };
 
